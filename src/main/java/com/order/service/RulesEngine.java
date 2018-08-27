@@ -12,17 +12,17 @@ import java.util.Map;
 public class RulesEngine {
 
     private FiveDifferentRule fiveDifferentRule;
-    private FourDifferntRule fourDifferntRule;
-    private ThreeDifferntRule threeDifferntRule;
+    private FourDifferentRule fourDifferentRule;
+    private ThreeDifferentRule threeDifferentRule;
     private TwoDifferentRule twoDifferentRule;
 
 
     @Autowired
-    public RulesEngine(FiveDifferentRule fiveDifferentRule, FourDifferntRule fourDifferntRule,
-                       ThreeDifferntRule threeDifferntRule, TwoDifferentRule twoDifferentRule ){
+    public RulesEngine(FiveDifferentRule fiveDifferentRule, FourDifferentRule fourDifferentRule,
+                       ThreeDifferentRule threeDifferentRule, TwoDifferentRule twoDifferentRule ){
         this.fiveDifferentRule = fiveDifferentRule;
-        this.fourDifferntRule = fourDifferntRule;
-        this.threeDifferntRule = threeDifferntRule;
+        this.fourDifferentRule = fourDifferentRule;
+        this.threeDifferentRule = threeDifferentRule;
         this.twoDifferentRule = twoDifferentRule;
     }
 
@@ -36,11 +36,11 @@ public class RulesEngine {
             case FiveDifferentRule.FIVE:
                 order.setTotal(this.fiveDifferentRule.apply(subTotal));
                 break;
-            case FourDifferntRule.FOUR:
-                order.setTotal(this.fourDifferntRule.apply(subTotal));
+            case FourDifferentRule.FOUR:
+                order.setTotal(this.fourDifferentRule.apply(subTotal));
                 break;
-            case ThreeDifferntRule.THREE:
-                order.setTotal(this.threeDifferntRule.apply(subTotal));
+            case ThreeDifferentRule.THREE:
+                order.setTotal(this.threeDifferentRule.apply(subTotal));
                 break;
             case TwoDifferentRule.TWO:
                 order.setTotal(this.twoDifferentRule.apply(subTotal));

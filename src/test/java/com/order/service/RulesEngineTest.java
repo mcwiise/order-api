@@ -22,10 +22,10 @@ public class RulesEngineTest {
     private FiveDifferentRule fiveDifferentRule;
 
     @Mock
-    private FourDifferntRule fourDifferntRule;
+    private FourDifferentRule fourDifferentRule;
 
     @Mock
-    private ThreeDifferntRule threeDifferntRule;
+    private ThreeDifferentRule threeDifferentRule;
 
     @Mock
     private TwoDifferentRule twoDifferentRule;
@@ -47,7 +47,7 @@ public class RulesEngineTest {
 
     @Test
     public void shouldApply20When4DifferentGroupsTest(){
-        given(fourDifferntRule.apply(any())).willReturn(10);
+        given(fourDifferentRule.apply(any())).willReturn(10);
         Order order = new Order();
 
         //when
@@ -59,7 +59,7 @@ public class RulesEngineTest {
 
     @Test
     public void shouldApply10When3DifferentGroupsTest(){
-        given(threeDifferntRule.apply(any())).willReturn(10);
+        given(threeDifferentRule.apply(any())).willReturn(10);
         Order order = new Order();
 
         //when
