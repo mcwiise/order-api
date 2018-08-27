@@ -8,7 +8,7 @@ public class Order {
 
     @Size(min=1, message = "The order must have one item at least")
     private List<Item> items;
-    private double total;
+    private Integer total;
 
     public Order(){
         items = new ArrayList<>();
@@ -22,11 +22,11 @@ public class Order {
         this.items.add(i);
     }
 
-    public double getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 }

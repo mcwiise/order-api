@@ -8,6 +8,13 @@ public class Item {
     private Integer quantity;
     private Tshirt tshirt;
 
+    public Item(){}
+
+    public Item(Integer quantity, Tshirt tshirt){
+        this.setQuantity(quantity);
+        this.setTshirt(tshirt);
+    }
+
     public Integer getQuantity() {
         return quantity;
     }

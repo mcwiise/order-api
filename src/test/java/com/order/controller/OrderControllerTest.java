@@ -78,9 +78,22 @@ public class OrderControllerTest {
                 .andExpect(status().isBadRequest());
     }
 
+    @Test
+    public void shouldReturn200WhenPOSTSimpleOrderTest() throws Exception {
+
+        final String requestBody = "{\"items\":[{\"quantity\":1,\"tshirt\":{\"color\":\"WHITE\"}}]}";
+        given(orderService.placeOrder(any())).willReturn(this.getMockOrderResult());
+        RequestBuilder postRequest = post("/v1/orders")
+                .content(requestBody)
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        //when
+        this.mockMvc.perform(postRequest)
+                .andExpect(status().isOk());
+    }
+
     public Order getMockOrderResult(){
         Order order = new Order();
-        order.setTotal(225000d);
+        order.setTotal(225000);
         return order;
     }
 }

@@ -22,7 +22,7 @@ public class OrderController {
 
     @PostMapping("/v1/orders")
     public ResponseEntity createOrder(@Valid @RequestBody Order order) {
-
+        
         Order result = this.orderService.placeOrder(order);
 
         return ResponseEntity.ok(result);
