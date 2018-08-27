@@ -13,11 +13,17 @@ public class RulesEngine {
 
     private FiveDifferentRule fiveDifferentRule;
     private FourDifferntRule fourDifferntRule;
+    private ThreeDifferntRule threeDifferntRule;
+    private TwoDifferentRule twoDifferentRule;
+
 
     @Autowired
-    public RulesEngine(FiveDifferentRule fiveDifferentRule, FourDifferntRule fourDifferntRule){
+    public RulesEngine(FiveDifferentRule fiveDifferentRule, FourDifferntRule fourDifferntRule,
+                       ThreeDifferntRule threeDifferntRule, TwoDifferentRule twoDifferentRule ){
         this.fiveDifferentRule = fiveDifferentRule;
         this.fourDifferntRule = fourDifferntRule;
+        this.threeDifferntRule = threeDifferntRule;
+        this.twoDifferentRule = twoDifferentRule;
     }
 
     public Order applyRules(Order order, Map<Tshirt.Color,Integer> groups) {
@@ -32,6 +38,12 @@ public class RulesEngine {
                 break;
             case FourDifferntRule.FOUR:
                 order.setTotal(this.fourDifferntRule.apply(subTotal));
+                break;
+            case ThreeDifferntRule.THREE:
+                order.setTotal(this.threeDifferntRule.apply(subTotal));
+                break;
+            case TwoDifferentRule.TWO:
+                order.setTotal(this.twoDifferentRule.apply(subTotal));
                 break;
             default:
                 order.setTotal(subTotal);
