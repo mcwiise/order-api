@@ -6,8 +6,7 @@ import java.util.List;
 public class Order {
 
     private List<Item> items;
-    private double amount;
-    private double discount;
+    private double total;
 
     public Order(){
         this.items = new ArrayList<>();
@@ -21,7 +20,12 @@ public class Order {
         this.items.add(i);
     }
 
-    public int getTotal() {
-        return 0;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }
