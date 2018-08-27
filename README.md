@@ -21,3 +21,10 @@ This will launch the application in http://localhost:8000
 ## Swagger Specification
 
 This project supports swagger. So for detailed documentation about sending request to the API, please refer to http://localhost:8080/swagger-ui.html#/
+
+
+## Unit testing
+
+As this is a maven project, you can also run the unit test suite by:
+
+`$ mvn test`
