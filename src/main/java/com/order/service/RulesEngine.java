@@ -12,10 +12,12 @@ import java.util.Map;
 public class RulesEngine {
 
     private FiveDifferentRule fiveDifferentRule;
+    private FourDifferntRule fourDifferntRule;
 
     @Autowired
-    public RulesEngine(FiveDifferentRule fiveDifferentRule){
+    public RulesEngine(FiveDifferentRule fiveDifferentRule, FourDifferntRule fourDifferntRule){
         this.fiveDifferentRule = fiveDifferentRule;
+        this.fourDifferntRule = fourDifferntRule;
     }
 
     public Order applyRules(Order order, Map<Tshirt.Color,Integer> groups) {
@@ -27,6 +29,9 @@ public class RulesEngine {
         switch (groups.size()){
             case FiveDifferentRule.FIVE:
                 order.setTotal(this.fiveDifferentRule.apply(subTotal));
+                break;
+            case FourDifferntRule.FOUR:
+                order.setTotal(this.fourDifferntRule.apply(subTotal));
                 break;
             default:
                 order.setTotal(subTotal);

@@ -11,5 +11,4 @@ public class FiveDifferentRule implements IRule {
     public Integer apply(Integer subTotal) {
         return subTotal - TWENTY_FIVE*(subTotal/100);
     }
-
 }
