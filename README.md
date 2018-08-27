@@ -18,6 +18,6 @@ This is a spring boot application built as a maven module. So to run the applica
 
 This will launch the application in http://localhost:8000
 
-# Swagger Specification
+## Swagger Specification
 
 This project supports swagger. So for detailed documentation about sending request to the API, please refer to http://localhost:8080/swagger-ui.html#/
