@@ -1,15 +1,31 @@
 package com.order.domain;
 
+import javax.validation.constraints.Min;
+
 public class Item {
 
-    private int quantity;
+    @Min(value = 1)
+    private Integer quantity;
     private Tshirt tshirt;
 
-    public void setQuantity(int q) {
-        this.quantity = q;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setTshirt(Tshirt t) {
-        this.tshirt = t;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Tshirt getTshirt() {
+        return tshirt;
+    }
+
+    public void setTshirt(Tshirt tshirt) {
+        this.tshirt = tshirt;
+    }
+
+    @Override
+    public String toString() {
+        return quantity + " - " + tshirt.getColor().name();
     }
 }

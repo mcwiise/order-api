@@ -1,10 +1,12 @@
 package com.order.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.order.domain.Item;
 import com.order.domain.Order;
 import com.order.domain.Tshirt;
 import com.order.service.OrderService;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -44,21 +46,39 @@ public class OrderControllerTest {
     @MockBean
     private OrderService orderService;
 
+    private static ObjectMapper mapper;
+
+    @BeforeClass
+    public static void init(){
+        mapper = new ObjectMapper();
+    }
+
     @Test
-    public void shouldReturn200WhenPOSTSimpleOrder() throws Exception {
+    public void shouldReturn400WhenPOSTOrderWithNoItemsTest() throws Exception {
         //given
-        given(orderService.placeOrder(any())).willReturn(this.getMockOrder());
+        given(orderService.placeOrder(any())).willReturn(this.getMockOrderResult());
         RequestBuilder postRequest = post("/v1/orders")
-                .content("{\"total\": 123}")
+                .content(mapper.writeValueAsString(new Order()))
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         //when
         this.mockMvc.perform(postRequest)
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.total", is(this.getMockOrder().getTotal())));
+                .andExpect(status().isBadRequest());
     }
 
-    public Order getMockOrder(){
+    @Test
+    public void shouldReturn400WhenPOSTOrderItemWithInvalidItemColorTest() throws Exception {
+
+        final String requestBody = "{\"items\":[{\"quantity\":1,\"tshirt\":{\"color\":\"TEST\"}}]}";
+        given(orderService.placeOrder(any())).willReturn(this.getMockOrderResult());
+        RequestBuilder postRequest = post("/v1/orders")
+                .content(requestBody)
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        //when
+        this.mockMvc.perform(postRequest)
+                .andExpect(status().isBadRequest());
+    }
+
+    public Order getMockOrderResult(){
         Order order = new Order();
         order.setTotal(225000d);
         return order;

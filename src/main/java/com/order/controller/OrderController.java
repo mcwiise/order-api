@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class OrderController {
 
@@ -19,7 +21,7 @@ public class OrderController {
     }
 
     @PostMapping("/v1/orders")
-    public ResponseEntity createOrder(@RequestBody Order order) {
+    public ResponseEntity createOrder(@Valid @RequestBody Order order) {
 
         Order result = this.orderService.placeOrder(order);
 
